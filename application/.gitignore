@@ -1,0 +1,9 @@
+# Ignorar pasta do CodeIgniter
+application/logs/
+application/cache/
+
+# Ignorar arquivos do CodeIgniter
+application/config/config.php
+application/config/database.php
+
+  
