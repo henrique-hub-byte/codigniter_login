@@ -10,7 +10,7 @@
                 e.preventDefault();
                 $.ajax({
                     type: 'POST',
-                    url: "http://localhost:8000/Login/logar",
+                    url: "http://localhost:8000/Register/registrar",
                     data: $('#form-login').serialize(),
                     dataType: 'json',
                     success: function(data) {
@@ -36,17 +36,23 @@
 </head>
 
 <body>
-    <h1>Login</h1>
+    <h1>criando a conta</h1>
     <form id="form-login" method="POST">
+        <label for="nome">Nome:</label>
+        <input type="text" name="nome" required></input>
+        <br>
         <label for="email">Email:</label>
         <input type="email" name="email" required></input>
+        <br>
+        <label for="telefone">Telefone:</label>
+        <input type="text" name="Telefone" required></input>
         <br>
         <label for="senha">Senha:</label>
         <input type="password" name="senha" required></input>
         <br>
-        <input type="submit" value="Entrar">
+        <input type="submit" value="Cadastrar">
     </form>
-    <?php echo anchor('register', 'Ainda não tem uma conta? Crie aqui'); ?>
+    <a href="<?php site_url('register') ?>">Ainda não tem uma conta? Clique aqui para se cadastrar</a>
 
 </body>
 
