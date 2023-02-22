@@ -53,4 +53,11 @@ class RegisterModel extends CI_Model
 
         return $query->num_rows() > 0;
     }
+
+    public function getRegisters()
+    {
+        $query = $this->db->get('register');
+
+        return $query->result();
+    }
 }

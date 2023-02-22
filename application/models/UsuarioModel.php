@@ -27,16 +27,24 @@ class UsuarioModel extends CI_Model
             $usuario = $query->row();
             $data = array(
                 'status' => 'success',
-                'mensgem' => 'usuario autenticado com sucesso',
+                'mensagem' => 'usuario autenticado com sucesso',
                 'usuario' => $usuario
             );
             
             return json_encode($data);
             
-        } else {
+        } else if($query->num_rows() == 0) {
             $data = array(
                 'status' => 'error',
-                'mensagem' => 'Usuario ou senha inválidos'
+                'mensagem' => 'Usuário ou senha inválidos'
+            );
+            return json_encode($data);
+    
+        }
+        else {
+            $data = array(
+                'status' => 'error',
+                'mensagem' => 'Ocorreu um erro ao verificar o usuário'
             );
 
             return json_encode($data); 

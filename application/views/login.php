@@ -19,6 +19,7 @@
                         console.log('------------------');
                         if (data.status == 'success') {
                             alert(data.mensagem);
+                            window.location.replace(data.redirect_url);
                         } else {
                             alert(data.mensagem);
                         }

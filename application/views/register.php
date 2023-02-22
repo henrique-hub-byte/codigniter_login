@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <title>Login</title>
+    <title>Cadastro</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script>
         $(document).ready(function() {
@@ -52,7 +52,7 @@
         <br>
         <input type="submit" value="Cadastrar">
     </form>
-    <a href="<?php site_url('register') ?>">Ainda não tem uma conta? Clique aqui para se cadastrar</a>
+    <?php echo anchor('login', 'Já tem uma conta? Crie aqui para logar'); ?>
 
 </body>
 

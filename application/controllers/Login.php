@@ -23,27 +23,21 @@ class Login extends CI_Controller
         $email = $this->input->post('email');
         $senha = $this->input->post('senha');
 
-        /* $dados = array(
-           // 'idusuario' => 4,
-            'email' => $email,
-            'senha' => md5($senha)
-        ); */
-
         // Verifica se o usuário existe no banco de dados
         $resultado_verificacao = $this->UsuarioModel->verificar_usuario($email, $senha);
 
-        if ($resultado_verificacao) {
-            echo json_encode(array('status' => 'success', 'mensagem' => 'Usuario autenticado com sucesso'));
-            return;
-        }
+        $retorno = json_decode($resultado_verificacao, true);
 
-        // Insere o usuário no banco de dados
-        $resultado_insercao = $this->UsuarioModel->inserir_usuario($email, $senha);
-
-        if ($resultado_insercao) {
-            echo json_encode(array('status' => 'success', 'mensagem' => 'Usuario criado com sucesso dentro da controller'));
+        if ($retorno['status'] == 'success') {
+            $mensagem = $retorno['mensagem'];
+            $url_redirecionamento = base_url('home');
+            $retorno = array('status' => 'success', 'mensagem' => $mensagem, 'redirect_url' => $url_redirecionamento);
         } else {
-            echo json_encode(array('status' => 'error', 'mensagem' => 'Não foi possível criar o usuario mestre'));
+            $mensagem = $retorno['mensagem'];
+            $retorno = array('status' => 'error', 'mensagem' => $mensagem);
         }
+    
+        header('Content-Type: application/json');
+        echo json_encode($retorno);
     }
 }
