@@ -2,38 +2,11 @@
 <html>
 
 <head>
+    <link rel="stylesheet" href="/public/css/login.css">
+    <link rel="stylesheet" href="/public/css/main.css">
     <title>Login</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script>
-        $(document).ready(function() {
-            $('#form-login').submit(function(e) {
-                e.preventDefault();
-                $.ajax({
-                    type: 'POST',
-                    url: "http://localhost:8000/Login/logar",
-                    data: $('#form-login').serialize(),
-                    dataType: 'json',
-                    success: function(data) {
-                        console.log('-----------------');
-                        console.log(JSON.stringify(data));
-                        console.log('------------------');
-                        if (data.status == 'success') {
-                            alert(data.mensagem);
-                            window.location.replace(data.redirect_url);
-                        } else {
-                            alert(data.mensagem);
-                        }
-                    },
-                    error: function(jqXHR, textStatus, errorThrown) {
-                        console.log(jqXHR.responseText);
-                        console.log(textStatus);
-                        console.log(errorThrown);
-                        alert('Ocorreu um erro ao processar sua solicitação');
-                    }
-                });
-            });
-        });
-    </script>
+    <script src="<?php echo base_url('public/js/login.js'); ?>"></script>
 </head>
 
 <body>

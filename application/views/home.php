@@ -2,28 +2,11 @@
 <html>
 
 <head>
+    <link rel="stylesheet" href="/public/css/main.css">
+    <link rel="stylesheet" href="/public/css/home.css">
     <title>Home</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script>
-        $(document).ready(function() {
-            $.ajax({
-                url: '<?php echo base_url('getRegisters'); ?>',
-                dataType: 'json',
-                success: function(data) {
-                    var tableHtml = '';
-                    $.each(data, function(index, value) {
-                        tableHtml += '<tr>';
-                        tableHtml += '<td>' + value.id + '</td>';
-                        tableHtml += '<td>' + value.nome + '</td>';
-                        tableHtml += '<td>' + value.email + '</td>';
-                        tableHtml += '<td>' + value.telefone + '</td>';
-                        tableHtml += '</tr>';
-                    });
-                    $('#lista-usuarios').html(tableHtml);
-                }
-            });
-        });
-    </script>
+    <script src="<?php echo base_url('public/js/home.js'); ?>"></script>
 </head>
 
 <body>

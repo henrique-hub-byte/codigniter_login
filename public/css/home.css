@@ -1,0 +1,46 @@
+
+/* Estilo para o body */
+/* body {
+    font-family: Arial, sans-serif;
+    background-color: #f7f7f7;
+    padding: 20px;
+} */
+
+/* Estilo para o título */
+h1 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+/* Estilo para a tabela */
+table {
+    width: 100%;
+    margin-bottom: 20px;
+    background-color: #fff;
+    border-collapse: collapse;
+    border-radius: 10px;
+    box-shadow: 0px 3px 3px #ccc;
+}
+
+/* Estilo para o cabeçalho da tabela */
+thead {
+    background-color: #f1f1f1;
+}
+
+/* Estilo para as células do cabeçalho da tabela */
+th {
+    padding: 10px;
+    text-align: left;
+}
+
+/* Estilo para as células da tabela */
+td {
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+}
+
+/* Estilo para o corpo da tabela */
+tbody {
+    background-color: #fff;
+}

@@ -2,42 +2,16 @@
 <html>
 
 <head>
+    <link rel="stylesheet" href="/public/css/main.css">
+    <link rel="stylesheet" href="/public/css/register.css">
     <title>Cadastro</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script>
-        $(document).ready(function() {
-            $('#form-login').submit(function(e) {
-                e.preventDefault();
-                $.ajax({
-                    type: 'POST',
-                    url: "http://localhost:8000/Register/registrar",
-                    data: $('#form-login').serialize(),
-                    dataType: 'json',
-                    success: function(data) {
-                        console.log('-----------------');
-                        console.log(JSON.stringify(data));
-                        console.log('------------------');
-                        if (data.status == 'success') {
-                            alert(data.mensagem);
-                        } else {
-                            alert(data.mensagem);
-                        }
-                    },
-                    error: function(jqXHR, textStatus, errorThrown) {
-                        console.log(jqXHR.responseText);
-                        console.log(textStatus);
-                        console.log(errorThrown);
-                        alert('Ocorreu um erro ao processar sua solicitação');
-                    }
-                });
-            });
-        });
-    </script>
+    <script src="<?php echo base_url('public/js/register.js'); ?>"></script>
 </head>
 
 <body>
     <h1>criando a conta</h1>
-    <form id="form-login" method="POST">
+    <form id="form-register" method="POST">
         <label for="nome">Nome:</label>
         <input type="text" name="nome" required></input>
         <br>
@@ -51,8 +25,11 @@
         <input type="password" name="senha" required></input>
         <br>
         <input type="submit" value="Cadastrar">
+        <br>
+        <?php echo anchor('login', 'Já tem uma conta? Crie aqui para logar', array('class' => 'my-class')); ?>
+
     </form>
-    <?php echo anchor('login', 'Já tem uma conta? Crie aqui para logar'); ?>
+    
 
 </body>
 
