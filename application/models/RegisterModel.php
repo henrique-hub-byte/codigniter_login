@@ -18,11 +18,21 @@ class RegisterModel extends CI_Model
             );
             return json_encode($data);
         } else {
+            $dados_login = array(
+                'email' => $email,
+                'senha' => md5($senha)
+            );
+
+            $this->db->insert('login', $dados_login);
+
+            $id_login = $this->db->insert_id();
+
             $dados = array(
                 'nome' => $nome,
                 'email' => $email,
                 'telefone' => $telefone,
-                'senha' => md5($senha)
+                'senha' => md5($senha),
+                'login_id' => $id_login
             );
 
             $this->db->insert('register', $dados);
@@ -59,5 +69,24 @@ class RegisterModel extends CI_Model
         $query = $this->db->get('register');
 
         return $query->result();
+    }
+
+    public function atualizar_registro($id, $dados)
+    {
+        $this->db->trans_start(); // Inicia a transação
+
+        $this->db->set('nome', $dados['nome']);
+        $this->db->set('email', $dados['email']);
+        $this->db->set('telefone', $dados['telefone']);
+        $this->db->where('id', $id);
+        $this->db->update('register');
+
+        $this->db->set('register_id', $id);
+        $this->db->where('register_id', $id);
+        $this->db->update('login');
+        
+        $this->db->trans_complete(); // Finaliza a transação
+
+        return $this->db->trans_status(); // Retorna true ou false
     }
 }

@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH' or exit('No direct script access allowed'));
 
-class UsuarioModel extends CI_Model
+class LoginModel extends CI_Model
 {
 
     public function inserir_usuario($email, $senha)
@@ -11,17 +11,19 @@ class UsuarioModel extends CI_Model
             'senha' => md5($senha)
         );
         
-        $this->db->insert('usuario', $dados);
+        $this->db->insert('login', $dados);
 
         return $this->db->affected_rows() > 0;
     }
 
     public function verificar_usuario($email, $senha)
     {
+        
         $this->db->select('*');
-        $this->db->from('usuario');
-        $this->db->where('email', $email);
-        $this->db->where('senha', md5($senha));
+        $this->db->from('login');
+        $this->db->join('register', 'login.id = register.id');
+        $this->db->where('login.email', $email);
+        $this->db->where('login.senha', md5($senha));
         $query = $this->db->get();
         if($query->num_rows() == 1){
             $usuario = $query->row();

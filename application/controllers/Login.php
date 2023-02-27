@@ -15,7 +15,7 @@ class Login extends CI_Controller
         parent::__construct();
         $this->load->database();
         $this->load->helper('url');
-        $this->load->model('UsuarioModel');
+        $this->load->model('LoginModel');
     }
 
     public function logar()
@@ -24,7 +24,7 @@ class Login extends CI_Controller
         $senha = $this->input->post('senha');
 
         // Verifica se o usuário existe no banco de dados
-        $resultado_verificacao = $this->UsuarioModel->verificar_usuario($email, $senha);
+        $resultado_verificacao = $this->LoginModel->verificar_usuario($email, $senha);
 
         $retorno = json_decode($resultado_verificacao, true);
 

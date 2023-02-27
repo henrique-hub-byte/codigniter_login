@@ -10,6 +10,7 @@
 </head>
 
 <body>
+
     <h1>criando a conta</h1>
     <form id="form-register" method="POST">
         <label for="nome">Nome:</label>
@@ -19,7 +20,7 @@
         <input type="email" name="email" required></input>
         <br>
         <label for="telefone">Telefone:</label>
-        <input type="text" name="Telefone" required></input>
+        <input type="text" name="telefone" required></input>
         <br>
         <label for="senha">Senha:</label>
         <input type="password" name="senha" required></input>
@@ -27,9 +28,7 @@
         <input type="submit" value="Cadastrar">
         <br>
         <?php echo anchor('login', 'Já tem uma conta? Crie aqui para logar', array('class' => 'my-class')); ?>
-
     </form>
-    
 
 </body>
 

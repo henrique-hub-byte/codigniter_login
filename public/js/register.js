@@ -12,8 +12,11 @@ $(document).ready(function() {
                 console.log('------------------');
                 if (data.status == 'success') {
                     console.log(data.mensagem);
+                    if (data.redirect) {
+                        window.location.href = data.redirect;
+                    }
                 } else {
-                    console.log(data.mensagem);
+                    alert(data.mensagem);
                 }
             },
             error: function(jqXHR, textStatus, errorThrown) {

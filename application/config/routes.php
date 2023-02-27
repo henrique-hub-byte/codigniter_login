@@ -54,5 +54,6 @@ $route['login'] = 'login';
 $route['register'] = 'register';
 $route['home'] = 'Home';
 $route['getRegisters'] = 'Home/lista_registros';
+$route['register/carregar_registro/(:num)'] = 'Register/carregar_registro/$1';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
