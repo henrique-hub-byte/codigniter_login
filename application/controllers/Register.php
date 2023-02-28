@@ -52,10 +52,11 @@ class Register extends CI_Controller
         }
     }
 
-    public function carregar_registro($id) {
+    public function carregar_registro($id)
+    {
         // Carrega o registro do banco de dados
         $register = $this->RegisterModel->getRegisters($id);
-    
+        var_dump($register);
         // Verifica se o registro existe
         if (!$register) {
             // Registro não encontrado
@@ -64,7 +65,7 @@ class Register extends CI_Controller
             // ou redireciona para a página inicial
             // redirect('Home/index');
         }
-    
+
         // Carrega a view de atualização e passa os dados do registro como parâmetro
         $data['register'] = $register;
         $this->load->view('updateRegisters', $data);
@@ -89,10 +90,10 @@ class Register extends CI_Controller
             'telefone' => $this->input->post('telefone'),
             'senha' => $this->input->post('senha')
         );
-
+        die($data);
         // Verifica se os dados do formulário são válidos
         if (!$data) {
-            
+
             // Se os dados do formulário não forem válidos, envia uma resposta em formato JSON com um campo 'success' igual a false
             $response = array('success' => false, 'message' => 'Dados inválidos');
             echo json_encode($response);

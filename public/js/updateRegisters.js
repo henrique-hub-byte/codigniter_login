@@ -1,4 +1,4 @@
-$(document).on('submit', '#form-update', function(e) {
+/* $(document).on('submit', '#form-update', function(e) {
     e.preventDefault();
     var nome = $('#nome').val();
     var email = $('#email').val();
@@ -29,4 +29,19 @@ $(document).on('submit', '#form-update', function(e) {
         }
     });
     console.log("fora do ajax")
+});
+ */
+$(document).ready(function() {
+    var id = $('#form-update').data('id');
+    $.ajax({
+        url: 'http://localhost:8000/Register/carregar_registro/' + id,
+        dataType: 'json',
+        success: function(data) {
+            $('input[name="id"]').val(data.id);
+            $('input[name="nome"]').val(data.nome);
+            $('input[name="email"]').val(data.email);
+            $('input[name="telefone"]').val(data.telefone);
+            $('input[name="senha"]').val(data.senha);
+        }
+    });
 });

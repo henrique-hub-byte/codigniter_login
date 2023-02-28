@@ -39,3 +39,4 @@ $(document).on('click', '.btn-deletar', function() {
         });
     }
 });
+
